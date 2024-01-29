@@ -1,0 +1,66 @@
+def classifyTriangle(a,b,c):
+    if a**2 + b**2 == c**2 or a**2 + c**2 == b**2 or b**2 + c**2 == a**2:
+        return "This is a right triangle."
+    elif a == b and b == c:
+        return "This is an equilateral triangle."
+    elif a == b and b != c and a != c:
+        return "This is an isoceles triangle."
+    elif a != b and b == c and a != c:
+        return "This is an isoceles triangle."
+    elif a != b and b != c and a == c:
+        return "This is an isoceles triangle."
+    elif a != b and b != c:
+        return "This is a scalene triangle."
+    else:
+        return "This is not a valid triangle."
+
+import unittest
+
+class TestTriangles(unittest.TestCase):
+
+    def test_RightTriangle(self):
+        self.assertEqual(classifyTriangle(3,4,5),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(5,12,13),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(7,24,25),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(8,15,17),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(9,40,41),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(11,60,61),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(12,35,37),"This is a right triangle.",msg="Should be Right")
+        self.assertEqual(classifyTriangle(13,84,85),"This is a right triangle.",msg="Should be Right")
+        
+    def test_ScaleneTriangle(self): 
+        self.assertEqual(classifyTriangle(10,15,30),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(1,15,3),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(103,145,330),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(2,5,40),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(10,15,50),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(1,2,3),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(4,5,6),"This is a scalene triangle.",msg='Should be Scalene')
+        self.assertEqual(classifyTriangle(2,15,89),"This is a scalene triangle.",msg='Should be Scalene')
+
+    def test_IsocelesTriangle(self): 
+        self.assertEqual(classifyTriangle(10,15,15),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(1,1,30),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(1,4,4),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(54,15,54),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(3,5,5),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(5,6,5),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(10,15,10),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(2,4,2),"This is an isoceles triangle.",msg='Should be Isoceles')
+        self.assertEqual(classifyTriangle(1,4,4),"This is an isoceles triangle.",msg='Should be Isoceles')
+
+    def test_EquilateralTriangle(self): 
+        self.assertEqual(classifyTriangle(15,15,15),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(5,5,5),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(1,1,1),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(3,3,3),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(150,150,150),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(99,99,99),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(389,389,389),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(4,4,4),"This is an equilateral triangle.",msg='Should be Equilateral')
+        self.assertEqual(classifyTriangle(100,100,100),"This is an equilateral triangle.",msg='Should be Equilateral')
+
+if __name__ == '__main__':
+    classifyTriangle(3,4,5)
+    
+    unittest.main(exit=False)
